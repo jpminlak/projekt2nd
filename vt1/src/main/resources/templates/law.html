@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="kor" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>법률상담소</title>
+</head>
+<style>
+    #column td {
+        background-color: rgb(190, 248, 190);
+        left: 50px;
+        width: 5%;
+        text-align: center;
+    }
+</style>
+<body>
+    <h3>법조인의 조언을 받아보세요.</h3>
+    <div>
+        <span><a href="/write"><input type="button" value="글쓰기"></a></span>
+        <span><a href="/"><input type="button" value="메인화면"></a></span>
+    </div>
+    <table>
+        <thead>
+        <tr id="column">
+            <td>번호</td>
+            <td>제목</td>
+            <td>작성자</td>
+            <td>시간</td>
+            <td>조회수</td>
+            <td>답변</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="l : ${law}">
+            <td th:text="${l.nummer}"></td>
+            <td th:text="${l.title}"></td>
+            <td th:text="${l.writer}"></td>
+            <td th:text="${l.dAndT}"></td>
+            <td th:text="${l.cnt}"></td>
+            <td th:text="${l.answer}"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

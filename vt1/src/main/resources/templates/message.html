@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <title>쪽지</title>
+</head>
+<style>
+    #content{
+        width: 200px;
+        height: 200px;
+    }
+    span1 {
+	    display: inline-block;
+	    width: 100px;
+	    vertical-align: middle
+    }
+</style>
+<body>
+    <h3>너에게 메시지를 남겨보는 거야</h3>
+    <form action="/write/message" method="post">
+        <!--          id="frm" encType="multipart/form-data">-->
+        <div>
+            <p>
+                <span1>받을 사람</span1>
+                <input type="text" name="ID" id="ID">
+            </p>
+            <p>
+                <span1>내용</span1>
+                <span2><textarea id="content" name="content"></textarea></span2>
+            </p>
+            <p> * 욕설, 비방 등 상대방에게 상처를 주는 행위를 하지 말아주세요. 이용에 제약을 받으실 수 있습니다. </p>
+            <p>
+                <!-- <input type="submit" value="작성" onclick="chk()"> -->
+                <span><input type="button" value="전송" onclick="chk()"></span>
+                <span><a href="/"><input type="button" value="메인화면"></a></span>
+            </p>
+        </div>
+    </form>
+</body>
+</html>
+<script>
+    function chk() {
+        let ID = document.getElementById("title").value;
+        let content = document.getElementById("writer").value;
+        if (ID == "") {
+            alert("쪽지 받으실 분을 입력해주세요.");
+            return;
+        }
+        if (ID.length > 20) {
+            alert("ID는 20글자 이하여야 합니다.");
+            return;
+        }
+        if (content == "") {
+            alert("내용은 반드시 있어야 합니다.");
+            return;
+        }
+        if (content.length > 10) {
+            alert("내용은 10글자 이하여야 합니다.");
+            return;
+        }
+        document.getElementById("frm").submit();
+    }
+</script>

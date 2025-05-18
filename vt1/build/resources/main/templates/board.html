@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="kor" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+</head>
+<style>
+    #column td {
+      background-color: aquamarine;
+      left: 50px;
+      width: 5%;
+      text-align: center;
+    }
+</style>
+<body>
+    <h3>각자 이야기 나눕시다</h3>
+    <div>
+        <span><a href="/write"><input type="button" value="글쓰기"></a></span>
+        <span><a href="/"><input type="button" value="메인화면"></a></span>
+    </div>
+    <table>
+        <thead>
+        <tr id="column">
+            <td>번호</td>
+            <td>제목</td>
+            <td>작성자</td>
+            <td>시간</td>
+            <td>조회수</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="brd : ${board}">
+            <td th:text="${brd.nummer}"></td>
+            <td th:text="${brd.title}"></td>
+            <td th:text="${brd.writer}"></td>
+            <td th:text="${brd.dAndT}"></td>
+            <td th:text="${brd.cnt}"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

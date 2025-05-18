@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="kor" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>보험상담소</title>
+</head>
+<style>
+    #column td {
+        background-color: lightgrey;
+        left: 50px;
+        width: 5%;
+        text-align: center;
+    }
+</style>
+<body>
+<h3>보험설계사가 여러분의 과실 비율을 조언합니다.</h3>
+<div>
+    <span><a href="/write"><input type="button" value="글쓰기"></a></span>
+    <span><a href="/"><input type="button" value="메인화면"></a></span>
+</div>
+<table>
+    <thead>
+    <tr id="column">
+        <td>번호</td>
+        <td>제목</td>
+        <td>작성자</td>
+        <td>시간</td>
+        <td>조회수</td>
+        <td>답변</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ins : ${insurance}">
+        <td th:text="${ins.nummer}"></td>
+        <td th:text="${ins.title}"></td>
+        <td th:text="${ins.writer}"></td>
+        <td th:text="${ins.dAndT}"></td>
+        <td th:text="${ins.cnt}"></td>
+        <td th:text="${ins.answer}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
