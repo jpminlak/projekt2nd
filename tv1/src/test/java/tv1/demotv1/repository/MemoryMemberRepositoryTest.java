@@ -3,13 +3,16 @@ package tv1.demotv1.repository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import tv1.demotv1.domain.Member;
+import tv1.demotv1.entity.Question;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MemoryMemberRepositoryTest {
     MemoryMemberRepository repository = new MemoryMemberRepository();
+    private MemoryMemberRepositoryTest questionRepository;
 
     @AfterEach
     public void afterEach() {
@@ -26,6 +29,17 @@ class MemoryMemberRepositoryTest {
         //then
         Member result = repository.findById(member.getId()).get();
         assertThat(result).isEqualTo(member);
+//        Question q1 = new Question();
+//        q1.setSubject("테스트를 왜 하나요");
+//        q1.setContent("테스트를 진행하는 이유에 대해서 궁금합니다.");
+//        q1.setCreateDate(LocalDateTime.now());
+//        this.questionRepository.save(q1);
+//
+//        Question q2 = new Question();
+//        q2.setSubject("Jpa에 관하여");
+//        q2.setContent("Jpa는 무엇이며, 사용하는 이유는 무엇인가요?");
+//        q2.setCreateDate(LocalDateTime.now());
+//        this.questionRepository.save(q2);
     }
     @Test
     public void findByName() {

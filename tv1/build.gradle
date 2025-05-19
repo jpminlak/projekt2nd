@@ -6,7 +6,6 @@ plugins {
 
 group = 'tv1'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
 
 java {
 	toolchain {
@@ -27,27 +26,39 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-//	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-//		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-//	}
+	//아래는 JPA를 사용하기 위해 추가한 것이다.
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	//아래는 JUnit의 사용을 위해서 추가하는 것이다.
+	testImplementation 'org.junit.jupiter:junit-jupiter'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+	jvmArgs '-Xshare:off' // JVM 아규먼트 설정
 }
 
-test {
-	useJUnitPlatform()
-}
+//	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//	implementation 'org.springframework.boot:spring-boot-starter-web'
+//	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
+//	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+//	compileOnly 'org.projectlombok:lombok'
+//	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+//	runtimeOnly 'com.h2database:h2'
+//	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+//	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+//	annotationProcessor 'org.projectlombok:lombok'
+//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4'
+//	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+//	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//	}
